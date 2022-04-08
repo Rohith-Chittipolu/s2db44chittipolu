@@ -1,0 +1,20 @@
+
+block content
+    h1= title
+    -let results =[{Food_name: "pizza" ,cuisine: "italian" ,calories: 285},{Food_name: "paneer butter masala" ,cuisine: "Indian" ,calories: 635},{Food_name: "burger",cuisine: "american",calories: 354}]
+    div(class="container-fluid")
+    div(class="row")
+        each j,index in results 
+            div(class="col-sm-2" onclick=`buy(${index})`)  #{j.Food_name}  
+            div(class="col-sm-2" onclick=`buy(${index})`)  #{j.cuisine}
+            div(class="col-sm-2" onclick=`buy(${index})`)  #{j.calories}
+script.
+    function buy(k)
+    {
+        alert(`You have purchased an item ${k+1}`);
+    }
+
+
+
+
+
