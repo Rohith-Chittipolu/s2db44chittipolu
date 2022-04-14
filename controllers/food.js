@@ -25,7 +25,7 @@ exports.food_detail = async function(req, res) {
     } 
 }; 
  
-// Handle Costume create on POST. 
+// Handle Food create on POST. 
 exports.food_create_post = async function(req, res) { 
     console.log(req.body) 
     let document = new food(); 
@@ -51,10 +51,26 @@ exports.food_delete = function(req, res) {
     res.send('NOT IMPLEMENTED: Food delete DELETE ' + req.params.id); 
 }; 
  
-// Handle Food update form on PUT. 
-exports.food_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Food update PUT' + req.params.id); 
-};
+// Handle Food update form on PUT.  
+exports.food_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await food.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.Food_name)  
+               toUpdate.Food_name = req.body.Food_name; 
+        if(req.body.cuisine) toUpdate.cuisine = req.body.cuisine; 
+        if(req.body.calories) toUpdate.calories = req.body.calories; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
+}; 
 // VIEWS 
 // Handle a show all view 
 exports.food_view_all_Page = async function(req, res) { 
