@@ -3,7 +3,7 @@ extends layout
 block content 
   h1= title 
  
-  form(id='FoodForm', action="resource/food", method="POST") 
+  form(id='FoodForm', action="/resource/resource/food", method="POST") 
     div.form-group 
         label.foodAttr(for='Food_name') Food name 
         input#Food_name(type='text', name='Food_name') 
@@ -21,14 +21,12 @@ block content
       // TODO do something here to show user that form is being submitted 
       fetch(event.target.action, { 
         method: 'POST', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+        body: new URLSearchParams(new FormData(event.target))  
       }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
+        return resp.text(); 
       }).then((body) => { 
         alert("Save succeded") 
-        // TODO handle body 
       }).catch((error) => { 
-        // TODO handle error 
         alert("Save failed " + error ) 
       }); 
     }); 

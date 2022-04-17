@@ -1,0 +1,41 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  - let foodid = toShow._id
+  - let Food_name = toShow.Food_name
+  - let cuisine = toShow.cuisine
+  - let calories = toShow.calories
+
+  div.row(class='mb-2')
+   div.mr-1 ID is
+   div #{foodid}
+  - let actionid = "/resource/resource/food/" + foodid 
+  form(id='FoodForm', action=actionid, method="PUT") 
+    div.form-group 
+        label.foodAttr(for='Food_name') Food Name 
+        input#Food_name(type='text', name='Food_name') 
+    div.form-group 
+        label.foodAttr(for='cuisine') Food cuisine
+        input#cuisine(type='text', name='cuisine') 
+    div.form-group 
+        label.foodAttr(for='calories') Calories 
+        input#calories(type='number', name='calories') 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['FoodForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) 
+      }).then((resp) => { 
+        return resp.json();  
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    });
