@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let foodid = toShow._id 
+  - let Food_name = toShow.Food_name 
+  - let cuisine = toShow.cuisine 
+  - let calories = toShow.calories 
+  div 
+    div.row 
+      div(class='foodAttr mr-3') Food ID is: 
+      div #{foodid} 
+    div.row 
+      div(class='foodAttr mr-3') Food Name is: 
+      div #{Food_name} 
+    div.row 
+      div(class='foodAttr mr-3') Food cuisine is: 
+      div #{cuisine} 
+    div.row 
+      div(class='foodAttr mr-3') Food Calories are: 
+      div #{calories} 

@@ -27,6 +27,10 @@ router.get('/resource/food/:id', food_controller.food_detail);
  
 // GET request for list of all Food items. 
 router.get('/resource/food', food_controller.food_list); 
+/* GET detail food page */ 
+router.get('/detail', food_controller.food_view_one_Page); 
+/* GET create costume page */ 
+router.get('/create',food_controller.food_create_Page);
  
 module.exports = router; 
  

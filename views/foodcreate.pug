@@ -1,0 +1,34 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  form(id='FoodForm', action="resource/food", method="POST") 
+    div.form-group 
+        label.foodAttr(for='Food_name') Food name 
+        input#Food_name(type='text', name='Food_name') 
+    div.form-group 
+        label.foodAttr(for='cuisine') Cuisine
+        input#cuisine(type='text', name='cuisine') 
+    div.form-group 
+        label.foodAttr(for='calories') Calories 
+        input#cost(type='number', name='calories') 
+    input(type="submit") 
+
+  script. 
+    document.forms['foodForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 
