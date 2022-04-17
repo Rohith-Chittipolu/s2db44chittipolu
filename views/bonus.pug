@@ -10,17 +10,17 @@ block content
     - let Food_name = toShow.Food_name 
     - let cuisine = toShow.cuisine 
     - let calories = toShow.calories 
-    - let actionid = "/resource/resource/food/" + foodid 
+    - let actionid = "/resource/food/" + foodid 
     script let actionid = "#{actionid}" 
     div 
       div.row 
         div(class='foodAttr mr-3') Food ID is: 
         div #{foodid} 
       div.row 
-        div(class='foodAttr mr-3') Food Name is: 
+        div(class='foodAttr mr-3') Food name is: 
         div #{Food_name} 
       div.row 
-        div(class='foodAttr mr-3') Cuisine  is: 
+        div(class='foodAttr mr-3') Cuisine is: 
         div #{cuisine} 
       div.row 
         div(class='foodAttr mr-3') Calories is: 
@@ -31,8 +31,8 @@ block content
  
   script. 
     function cancel() { 
-      // Go back to the home page for the costume collection 
-      window.location.href='/resource/resource/food' 
+      // Go back to the home page for the food collection 
+      window.location.href='/food' 
     } 
   script. 
     function deleteOnid() { 
@@ -44,10 +44,10 @@ block content
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
         alert("Delete succeded") 
-        window.location.href='/resource/resource/food' 
+        window.location.href='/food' 
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 
         alert("Delete failed " + error ) 
       }); 
-    }
+    } 
