@@ -29,7 +29,7 @@ router.get('/resource/food/:id', food_controller.food_detail);
 router.get('/resource/food', food_controller.food_list); 
 /* GET detail food page */ 
 router.get('/detail', food_controller.food_view_one_Page); 
-/* GET create costume page */ 
+/* GET create food page */ 
 router.get('/create',food_controller.food_create_Page);
 /* GET create update page */ 
 router.get('/update', food_controller.food_update_Page); 
