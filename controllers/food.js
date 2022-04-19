@@ -116,7 +116,7 @@ exports.food_create_Page =  function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 };
-// Handle building the view for updating a costume. 
+// Handle building the view for updating a food. 
 // query provides the id 
 exports.food_update_Page =  async function(req, res) { 
     console.log("update view for item "+req.query.id) 
