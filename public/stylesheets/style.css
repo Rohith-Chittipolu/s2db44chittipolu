@@ -10,3 +10,8 @@ a {
   background-color: greenyellow; 
   width: 130px; 
 }
+.bonus {
+  color: red;
+  font-family: cursive;
+
+}
