@@ -1,15 +1,13 @@
-extends layout
 
-block content
-  h1= title
-  p Rohith Chittipolu's #{title}
-  button(type="button",class="btn btn-danger",onclick="moreClaps()") Press Me
-  p 
-  div(id="target") Clap for me
-  script.
-   clap_count=0;
-   function moreClaps() {
-   clap_count=clap_count+2;
-   document.getElementById("target").innerHTML = "Clap " +clap_count+ " times";
-   } 
-  a(href="food") food link
+extends layout 
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/food") Take me to food 
+    br 
+    a(href="/logout") Logout 
