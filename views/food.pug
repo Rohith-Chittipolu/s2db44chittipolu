@@ -2,11 +2,11 @@ extends layout
 
 block content
     h1= title
-    -let results =[{Food_name: "pizza" ,cuisine: "italian" ,calories: 285},{Food_name: "paneer butter masala" ,cuisine: "Indian" ,calories: 635},{Food_name: "burger",cuisine: "american",calories: 354}]
+    -let items =results;
     div(class="container-fluid") 
       div(class="row m-1") 
-       each item in results
-        - let destination = `dispatch(\"/resource/update/?id=${item._id}\")` 
+       each item in items
+        - let destination = `dispatch(\"/food/update/?id=${item._id}\")` 
         div(class="row-sm-2", class="m-1") Item #{item.Food_name}(#{item.cuisine}) is #{item.calories} 
           button.btn( class="btn-primary ml-1", onclick= destination) Update 
     script. 

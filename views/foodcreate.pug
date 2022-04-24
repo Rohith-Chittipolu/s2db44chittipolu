@@ -3,7 +3,7 @@ extends layout
 block content 
   h1= title 
  
-  form(id='foodForm', action="/resource/resource/food", method="POST") 
+  form(id='foodForm', action="/resource/food", method="POST") 
     div.form-group 
         label.foodAttr(for='Food_name') Food name 
         input#Food_name(type='text', name='Food_name') 
