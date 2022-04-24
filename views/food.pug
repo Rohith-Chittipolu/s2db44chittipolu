@@ -5,10 +5,16 @@ block content
     -let items =results;
     div(class="container-fluid") 
       div(class="row m-1") 
+       - let cdestination = `dispatch(\"/food/create\")`
+       button.btn( class="btn-warning ml-1", onclick= cdestination) Create
        each item in items
-        - let destination = `dispatch(\"/food/update/?id=${item._id}\")` 
+        - let destination = `dispatch(\"/food/update/?id=${item._id}\")`
+        - let ddestination = `dispatch(\"/food/detail/?id=${item._id}\")`
+        - let dedestination = `dispatch(\"/food/delete/?id=${item._id}\")` 
         div(class="row-sm-2", class="m-1") Item #{item.Food_name}(#{item.cuisine}) is #{item.calories} 
-          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
+          button.btn( class="btn-secondary ml-1", onclick= ddestination) Detail
+          button.btn( class="btn-danger ml-1", onclick= dedestination) Delete 
     script. 
       function dispatch(path){ 
         window.location.href=path 

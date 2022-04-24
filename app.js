@@ -18,7 +18,7 @@ passport.use(new LocalStrategy(
       return done(null, user); 
     }); 
   }))
-const connectionString =  process.env.MONGO_CON 
+const connectionString =  process.env.MONGO_CON || 'mongodb+srv://RohithCh:Rohith6228@cluster0.epf69.mongodb.net/learnMongo?retryWrites=true?w=majority' 
 mongoose = require('mongoose'); 
 mongoose.connect(connectionString,  
 {useNewUrlParser: true, 
